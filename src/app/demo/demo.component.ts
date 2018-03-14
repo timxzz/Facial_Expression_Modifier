@@ -14,7 +14,8 @@ export class DemoComponent implements OnInit {
   maxSize: number = 5;
   loading: boolean = false;
   selectedImage: any;
-  faces: Face[] = EmojiFACES;
+  faces: Array<Face> = EmojiFACES;
+  fileChanged: boolean = false;
 
   test: any;
 
@@ -27,16 +28,45 @@ export class DemoComponent implements OnInit {
     this.errors = []; // Clear error
     if(event.target.files && event.target.files.length > 0
         && this.isValidFiles(event.target.files)) {
+
       this.selectedImage = event.target.files[0];
+      this.fileChanged = true;
+
+      // For preview
+      var reader = new FileReader();
+      reader.onload = (event:any) => {
+        this.faces[0].image = event.target.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
     }
   }
 
   onSubmit(): void {
+    if(!this.selectedImage){
+      console.log("Haven't selected image to upload.");
+      return;
+    }
+
     const inImage = this.prepareUpload();
     this.loading = true;
 
     this.fileService.getFaces(inImage)
-        .subscribe(rxFaces => {this.faces = rxFaces, console.log(rxFaces)});
+        .subscribe(
+          (data) => {
+            this.faces = data;
+            this.selectedImage = null;
+            this.fileChanged = false;
+          },
+
+          (err) => {
+            console.log("Error occurred during requesting images: " + err);
+            this.errors.push("Error occurred during requesting images: " + err);
+          },
+
+          () => {
+            this.loading = false;
+          }
+        );
     // In a real-world app you'd have a http request / service call here like
     // this.http.post(this.apiURL, formModel).subscribe(res => {console.log(res);
     //   this.test = res['image']});
@@ -48,14 +78,9 @@ export class DemoComponent implements OnInit {
     // }, 1000);
   }
 
-  // getFaces(): void {
-  //   this.faces = this.fileService.getFaces();
-  // }
-
   private prepareUpload(): any {
     let input = new FormData();
     input.append('image', this.selectedImage);
-    console.log(this.selectedImage);
     return input;
   }
 
