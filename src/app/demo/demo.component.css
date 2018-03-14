@@ -1,0 +1,73 @@
+.image_holder_128x128 {
+  width: 128px;
+  height: 128px;
+}
+
+.the-arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.face-col {
+  padding: 1px;
+}
+
+.input-image {
+  cursor: pointer;
+}
+
+.plus-icon {
+  position:absolute;
+  top: 25px;
+  right: 33px;
+}
+
+.plus-icon-not-active {
+  opacity: 0;
+}
+
+.plus-icon-active {
+  opacity: 1;
+  color: dimgray;
+}
+
+.input-image-active {
+  transition: 0.5s, opacity 0s;
+  -webkit-transition: 0.5s, opacity 0s;
+  opacity: 1;
+}
+
+.input-image-not-active {
+  transition: 0.5s, opacity 0s;
+  -webkit-transition: 0.5s, opacity 0s;
+  opacity: 0.1;
+}
+
+.upload-image {
+  position: absolute;
+  top: 1px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.submit-image {
+  cursor: pointer;
+}
+
+.submit-image:hover {
+  color: dimgray;
+  opacity: 0.9;
+}
+
+.submit-image:active {
+  transform: translateX(4px);
+}

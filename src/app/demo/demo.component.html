@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-10">
+      <div class="row justify-content-center">
+        <div class="col-auto face-col input-image"
+             (mouseover)="hover=true" (mouseout)="hover=false"
+             (mousedown)="imageInput.click()">
+
+          <img [src]="'data:image/png;base64,'+faces[0].image" alt="in" class="img-thumbnail image_holder_128x128"
+               [ngClass]="{'input-image-active': !hover, 'input-image-not-active': hover}">
+          <i class="fa fa-plus fa-5x plus-icon" aria-hidden="true"
+             [ngClass]="{'plus-icon-active': hover, 'plus-icon-not-active': !hover}"></i>
+          <input type="file" class="upload-image" (change)="onFileChange($event)" accept="image/*" #imageInput>
+        </div>
+
+        <div class="col-auto">
+          <div class="the-arrow">
+            <i class="fa fa-arrow-right fa-4x submit-image" aria-hidden="true" style="padding: 10px;"
+               (mousedown)="onSubmit()"></i>
+          </div>
+        </div>
+
+        <div class="col-auto face-col">
+          <img [src]="'data:image/png;base64,'+faces[1].image" alt="in" class="img-thumbnail image_holder_128x128">
+        </div>
+        <div class="col-auto face-col">
+          <img [src]="'data:image/png;base64,'+faces[2].image" alt="in" class="img-thumbnail image_holder_128x128">
+        </div>
+        <div class="col-auto face-col">
+          <img [src]="'data:image/png;base64,'+faces[3].image" alt="in" class="img-thumbnail image_holder_128x128">
+        </div>
+        <div class="col-auto face-col">
+          <img [src]="'data:image/png;base64,'+faces[4].image" alt="in" class="img-thumbnail image_holder_128x128">
+        </div>
+        <div class="col-auto face-col">
+          <img [src]="'data:image/png;base64,'+faces[5].image" alt="in" class="img-thumbnail image_holder_128x128">
+        </div>
+        <div class="col-auto face-col">
+          <img [src]="'data:image/png;base64,'+faces[6].image" alt="in" class="img-thumbnail image_holder_128x128">
+        </div>
+        <div class="col-auto face-col">
+          <img [src]="'data:image/png;base64,'+faces[7].image" alt="in" class="img-thumbnail image_holder_128x128">
+        </div>
+      </div>
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+</div>
