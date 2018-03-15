@@ -16,12 +16,18 @@ export class DemoComponent implements OnInit {
   selectedImage: any;
   faces: Array<Face> = EmojiFACES;
   fileChanged: boolean = false;
+  hoverOnUpload: boolean = false;
 
   test: any;
 
   constructor(private fileService: FileService) { }
 
   ngOnInit() { }
+
+  mouseEventOnUpload(e): void {
+    if(e.type==='mouseover') this.hoverOnUpload = true;
+    else if(e.type==='mouseout') this.hoverOnUpload = false;
+  }
 
   // Function refer to: https://nehalist.io/uploading-files-in-angular2/
   onFileChange(event): void {

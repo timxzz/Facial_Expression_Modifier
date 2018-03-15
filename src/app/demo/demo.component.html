@@ -5,13 +5,13 @@
     <div class="col-10">
       <div class="row justify-content-center">
         <div class="col-auto face-col input-image"
-             (mouseover)="hover=true" (mouseout)="hover=false"
+             (mouseover)="mouseEventOnUpload($event)" (mouseout)="mouseEventOnUpload($event)"
              (mousedown)="imageInput.click()">
 
           <img [src]="faces[0].image" alt="in" class="img-thumbnail image_holder_128x128"
-               [ngClass]="{'input-image-active': !hover, 'input-image-not-active': hover}">
+               [ngClass]="{'input-image-active': !hoverOnUpload, 'input-image-not-active': hoverOnUpload}">
           <i class="fa fa-plus fa-5x plus-icon" aria-hidden="true"
-             [ngClass]="{'plus-icon-active': hover, 'plus-icon-not-active': !hover}"></i>
+             [ngClass]="{'plus-icon-active': hoverOnUpload, 'plus-icon-not-active': !hoverOnUpload}"></i>
           <input type="file" class="upload-image" (change)="onFileChange($event)" accept="image/*" #imageInput>
         </div>
 
