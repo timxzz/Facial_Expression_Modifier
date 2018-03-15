@@ -11,7 +11,9 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FileService {
 
-  private facesUrl: string = 'http://127.0.0.1:5000/image';
+  private facesUrl: string = 'http://blackberry.timx.me:5000/image'; //'http://127.0.0.1:5000/image';
+  // private facesUrl: string = 'http://127.0.0.1:5000/image';
+
 
   constructor(private http: HttpClient) { }
 
