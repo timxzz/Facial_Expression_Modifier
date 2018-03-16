@@ -17,8 +17,9 @@
 
         <div class="col-auto">
           <div class="the-arrow">
-            <i class="fa fa-arrow-right fa-4x submit-image" aria-hidden="true" style="padding: 10px;"
+            <i *ngIf="!loading" class="fa fa-arrow-right fa-4x submit-image" aria-hidden="true" style="padding: 10px;"
                (mousedown)="onSubmit()"></i>
+            <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
           </div>
         </div>
 
