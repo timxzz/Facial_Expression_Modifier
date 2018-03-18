@@ -1,10 +1,35 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { trigger, transition, style, animate, state } from '@angular/animations'
+
+
 import { EmojiFACES } from '../placeholders-images';
 import { Face } from "../face";
 import { FileService } from '../file.service'
 
+import 'rxjs/add/operator/finally';
+
 @Component({
   selector: 'app-demo',
+  animations: [
+    trigger(
+      'errorAnimation',
+      [
+        state('*', style({ 'overflow-y': 'hidden' })),
+        state('void', style({ 'overflow-y': 'hidden' })),
+        transition(
+          '* => void', [
+            style({ height: '*', opacity: 1}),
+            animate('500ms', style({ height: 0, opacity: 0 }))
+          ]
+        ),
+        transition(
+          'void => *', [
+            style({ height: 0, opacity: 0 }),
+            animate('500ms', style({ height: '*', opacity: 1 })),
+          ]
+        )]
+    )
+  ],
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css']
 })
@@ -17,8 +42,6 @@ export class DemoComponent implements OnInit {
   faces: Array<Face> = EmojiFACES;
   fileChanged: boolean = false;
   hoverOnUpload: boolean = false;
-
-  test: any;
 
   constructor(private fileService: FileService) { }
 
@@ -49,6 +72,7 @@ export class DemoComponent implements OnInit {
 
   onSubmit(): void {
     if(!this.selectedImage){
+      this.errors.push("Upload image by clicking the guy with glasses");
       console.log("Haven't selected image to upload.");
       return;
     }
@@ -57,6 +81,7 @@ export class DemoComponent implements OnInit {
     this.loading = true;
 
     this.fileService.getFaces(inImage)
+        .finally(() => { this.loading = false; })
         .subscribe(
           (data) => {
             this.faces = data;
@@ -65,23 +90,14 @@ export class DemoComponent implements OnInit {
           },
 
           (err) => {
-            console.log("Error occurred during requesting images: " + err);
-            this.errors.push("Error occurred during requesting images: " + err);
-          },
-
-          () => {
-            this.loading = false;
+            console.log(err);
+            if(err.status == 0) {
+              this.errors.push("Backend server off-line");
+            } else {
+              this.errors.push(err.error.message);
+            }
           }
         );
-    // In a real-world app you'd have a http request / service call here like
-    // this.http.post(this.apiURL, formModel).subscribe(res => {console.log(res);
-    //   this.test = res['image']});
-    // setTimeout(() => {
-    //   // FormData cannot be inspected (see "Key difference"), hence no need to log it here
-    //   console.log('done!');
-    //   this.getFaces();
-    //   this.loading = false;
-    // }, 1000);
   }
 
   private prepareUpload(): any {
