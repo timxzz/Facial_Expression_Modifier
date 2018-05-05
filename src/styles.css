@@ -8,13 +8,9 @@
 }
 
 html, body, .main-content {
-  height: 100%;
+  min-height: 100vh;
   font-family: karlaregular,sans-serif;
 }
 
-
 .footer-position {
-  clear: both;
-  position: relative;
-  z-index: 10;
 }
