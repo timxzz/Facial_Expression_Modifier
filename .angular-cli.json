@@ -11,7 +11,8 @@
         "assets",
         "favicon.ico",
         "images",
-        "pdf"
+        "pdf",
+        "font"
       ],
       "index": "index.html",
       "main": "main.ts",
