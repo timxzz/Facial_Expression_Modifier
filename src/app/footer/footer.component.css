@@ -1,0 +1,13 @@
+.footer-icon > i {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.footer-icon > i:before {
+  transition: color .3s;
+  color: #666;
+}
+
+.footer-icon > i:hover:before {
+  color: #b2b2b2;
+}

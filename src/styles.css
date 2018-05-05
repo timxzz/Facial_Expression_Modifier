@@ -2,11 +2,14 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.css";
 
-body {
-  padding-top: 5rem;
+html, body, .main-content {
+  height: 100%;
+  font-family: karlaregular,sans-serif;
 }
 
-.top-banner {
-  padding: 3rem 1.5rem;
-  text-align: center;
+
+.footer-position {
+  clear: both;
+  position: relative;
+  z-index: 10;
 }

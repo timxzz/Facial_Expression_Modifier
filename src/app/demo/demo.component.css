@@ -1,3 +1,8 @@
+.demo-padding {
+  padding-top: 5px;
+  padding-bottom: 40px;
+}
+
 .image_holder_128x128 {
   width: 128px;
   height: 128px;

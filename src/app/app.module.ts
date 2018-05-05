@@ -9,13 +9,15 @@ import { FooterComponent } from './footer/footer.component';
 import { DemoComponent } from './demo/demo.component';
 
 import { FileService } from './file.service';
+import { DocComponent } from './doc/doc.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    DemoComponent
+    DemoComponent,
+    DocComponent
   ],
   imports: [
     BrowserModule,
