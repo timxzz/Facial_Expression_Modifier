@@ -1,0 +1,29 @@
+.container {
+  background-color: white;
+}
+
+.main-content {
+  word-wrap: break-word;
+  max-width: 64rem;
+  padding: 2rem 6rem;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  color: #606c71;
+}
+
+.main-content img {
+  max-width: 100%;
+}
+
+.main-content h2 {
+  color: #49494c;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.screencast {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
