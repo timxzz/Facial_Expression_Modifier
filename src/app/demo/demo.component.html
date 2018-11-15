@@ -6,6 +6,11 @@
           {{ errors[0] }}
         </div>
       </div>
+      <div class="row justify-content-center" *ngIf="loading" [@errorAnimation]>
+        <div class="alert alert-success" role="alert">
+          It might take up to a minute, as the backend is only a small droplet on DigitalOcean.
+        </div>
+      </div>
 
 
       <div class="row justify-content-center">
